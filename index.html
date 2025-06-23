@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebApp™ Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="grid-container">
+    <header class="header">
+  <h1 class="logo">WebApp™</h1>
+
+  <div class="header-right">
+    <div class="notification">
+      <img src="/web_app_dashboard_v3.2/svgs/bell.svg" alt="Notifications" class="bell-icon" />
+      <span class="badge"></span>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="profile">
+      <img src="/web_app_dashboard_v3.2/images/member-1.jpg" alt="Student Name" class="avatar" />
+      <span class="student-name">Student Name</span>
+    </div>
+  </div>
+</header>
+
+    <nav>
+      <ul>
+        <li><a href="#dashboard"><img src="/web_app_dashboard_v3.2/svgs/home.svg" alt="Dashboard" /></a></li>
+        <li><a href="#members"><img src="/web_app_dashboard_v3.2/svgs/mmbers.svg" alt="Members" /></a></li>
+        <li><a href="#visits"><img src="/web_app_dashboard_v3.2/svgs/bar-chart.svg" alt="Visits" /></a></li>
+        <li><a href="#settings"><img src="/web_app_dashboard_v3.2/svgs/settings.svg" alt="Settings" /></a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="alert" id="alert">Alert: You have unread messages <span class="close">&times;</span></div>
+
+      <section class="traffic">
+        <h2>TRAFFIC</h2>
+        <div class="timeframe">
+          <button class="active" data-period="hourly">Hourly</button>
+          <button data-period="daily">Daily</button>
+          <button data-period="weekly">Weekly</button>
+          <button data-period="monthly">Monthly</button>
+        </div>
+        <canvas id="trafficChart"></canvas>
+        <div class="charts">
+          <canvas id="dailyTrafficChart"></canvas>
+          <canvas id="mobileUsersChart"></canvas>
+        </div>
+      </section>
+
+      <section class="social-stats">
+        <h2>SOCIAL STATS</h2>
+        <div class="social">
+          <div class="social-item">
+            <img src="/web_app_dashboard_v3.2/svgs/facebook.svg" alt="Facebook" width="24" height="24" />
+            <span>Facebook</span>
+            <span>10,320</span>
+          </div>
+          <div class="social-item">
+            <img src="/web_app_dashboard_v3.2/svgs/insttagram.svg" alt="Instagram" width="24" height="24" />
+            <span>Instagram</span>
+            <span>16,445</span>
+          </div>
+          <div class="social-item">
+            <img src="/web_app_dashboard_v3.2/svgs/twitter.svg" alt="Twitter" width="24" height="24" />
+            <span>Twitter</span>
+            <span>22,189</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="members">
+        <h2>NEW MEMBERS</h2>
+        <ul>
+          <li><img src="/web_app_dashboard_v3.2/images/member-1.jpg" alt="Victoria Chambers" /><span>Victoria Chambers</span><span>victoria.chambers80@example.com</span><span>10/15/20</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-2.jpg" alt="Dale Byrd" /><span>Dale Byrd</span><span>dale.byrd52@example.com</span><span>10/15/20</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-3.jpg" alt="Dawn Wood" /><span>Dawn Wood</span><span>dawn.wood16@example.com</span><span>10/15/20</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-4.jpg" alt="Dan Oliver" /><span>Dan Oliver</span><span>dan.oliver82@example.com</span><span>10/15/20</span></li>
+        </ul>
+      </section>
+
+      <section class="activity">
+        <h2>RECENT ACTIVITY</h2>
+        <ul>
+          <li><img src="/web_app_dashboard_v3.2/images/member-1.jpg" alt="Victoria Chambers" /><span>Victoria Chambers</span><span>commented on WebApp's SEO Tips</span><span>4 hours ago</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-2.jpg" alt="Dale Byrd" /><span>Dale Byrd</span><span>liked the post Facebook's Changes for 2021</span><span>5 hours ago</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-3.jpg" alt="Dawn Wood" /><span>Dawn Wood</span><span>commented on Facebook's Changes for 2021</span><span>5 hours ago</span></li>
+          <li><img src="/web_app_dashboard_v3.2/images/member-4.jpg" alt="Dan Oliver" /><span>Dan Oliver</span><span>posted WebApp's SEO Tips</span><span>1 day ago</span></li>
+        </ul>
+      </section>
+
+      <section class="message">
+        <h2>MESSAGE USER</h2>
+        <input type="text" id="userSearch" placeholder="Search for User" />
+        <textarea id="messageInput" placeholder="Message for User"></textarea>
+        <button id="sendMessage">SEND</button>
+        <p id="messageError" class="error"></p>
+      </section>
+
+      <section class="settings">
+        <h2>SETTINGS</h2>
+        <div class="setting">
+          <span>Send Email Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="emailNotifications" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="setting">
+          <span>Set Profile to Public</span>
+          <label class="switch">
+            <input type="checkbox" id="profilePublic" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="setting">
+          <span>Select Timezone</span>
+          <select id="timezone">
+            <option value="UTC">UTC</option>
+            <option value="EST">EST</option>
+            <option value="PST">PST</option>
+          </select>
+        </div>
+        <button id="saveSettings">SAVE</button>
+        <button id="cancelSettings">CANCEL</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="/web_app_dashboard_v3.2/scripts.js"></script>
+</body>
+</html>

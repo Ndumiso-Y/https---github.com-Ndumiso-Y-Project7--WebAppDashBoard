@@ -1,0 +1,481 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 12px; /* Adjusted for mobile */
+    line-height: 1.4;
+}
+
+/* Grid layout - Mobile first (single column) */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main";
+    grid-template-rows: auto auto 1fr;
+    min-height: 100vh;
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #6a5acd; /* or whatever your primary color is */
+  color: white;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.2rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header h1 {
+    font-size: 18px; /* Smaller for mobile */
+}
+
+.notification {
+    position: relative;
+}
+
+.notification .bell-icon {
+   width: 24px;
+  height: 24px;
+  filter: invert(1); /* Make black SVG white */
+  cursor: pointer;
+}
+
+.notification .bell-icon:hover {
+    transform: scale(1.1);
+}
+
+.notification .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: lime;
+    border-radius: 50%;
+}
+
+.separator {
+  width: 1px;
+  height: 33px;
+  background-color: white;
+  margin: 0 10px;
+}
+
+
+.profile {
+display: flex;
+align-items: center;
+gap: 10px;
+
+}
+
+.profile img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.profile span {
+    font-size: 12px; /* Reduced size */
+}
+
+/* Navigation */
+nav {
+    grid-area: nav;
+    background-color: #4a4a4a;
+    padding: 8px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
+}
+
+/* Main content */
+main {
+    grid-area: main;
+    padding: 10px;
+    display: grid;
+    gap: 10px;
+}
+
+/* Alert */
+.alert {
+    background-color: #6a5acd;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+}
+
+.alert .close {
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Cards */
+.traffic, .social-stats, .members, .activity, .message, .settings {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.traffic h2, .social-stats h2, .members h2, .activity h2, .message h2, .settings h2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* Traffic section */
+.timeframe {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.timeframe button {
+    padding: 4px 8px;
+    background-color: #90ee90;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.timeframe .active {
+    background-color: #32cd32;
+}
+
+.charts {
+    display: grid;
+    gap: 10px;
+}
+
+#trafficChart, #dailyTrafficChart, #mobileUsersChart {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 150px; /* Adjusted for mobile */
+}
+
+/* Social items */
+.social-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+    padding: 8px;
+    background-color: #e6e6fa;
+    border-radius: 4px;
+}
+
+.social-item img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Members and activity list */
+.members ul, .activity ul {
+    list-style: none;
+}
+
+.members ul li, .activity ul li {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+    font-size: 12px;
+}
+
+.members ul li img, .activity ul li img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Message form */
+.message input,
+.message textarea {
+    width: 100%;
+    margin: 6px 0;
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.message button {
+    width: 100%;
+    padding: 8px;
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+/* Settings switches */
+.settings .setting {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+    font-size: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 15px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6a5acd;
+}
+
+input:checked + .slider:before {
+    transform: translateX(15px);
+}
+
+/* Select dropdown */
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Buttons */
+button#saveSettings,
+button#cancelSettings {
+    padding: 8px 15px;
+    margin-right: 5px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+}
+
+button#saveSettings {
+    background-color: #6a5acd;
+    color: white;
+}
+
+button#cancelSettings {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* Tablet (768px) and above */
+@media (min-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .grid-container {
+        grid-template-areas:
+            "header header"
+            "nav main";
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    header {
+        padding: 10px 20px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .notification .bell-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .notification .badge {
+        width: 8px;
+        height: 8px;
+    }
+
+    .profile img {
+        width: 40px;
+        height: 40px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    nav ul li a img {
+        width: 24px;
+        height: 24px;
+    }
+
+    main {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .alert {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .alert .close {
+        font-size: 16px;
+    }
+
+    .traffic, .social-stats, .members, .activity, .message, .settings {
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .timeframe button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .charts {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #trafficChart, #dailyTrafficChart, #mobileUsersChart {
+        max-height: 200px;
+    }
+
+    .social-item {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .social-item img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .members ul li img, .activity ul li img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .message input,
+    .message textarea {
+        padding: 10px;
+    }
+
+    .message button {
+        padding: 10px;
+    }
+
+    .switch {
+        width: 40px;
+        height: 20px;
+    }
+
+    .slider:before {
+        height: 16px;
+        width: 16px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+
+    select {
+        padding: 10px;
+    }
+
+    button#saveSettings,
+    button#cancelSettings {
+        padding: 10px 20px;
+        margin-right: 10px;
+    }
+}
+
+/* Desktop (1024px) and above */
+@media (min-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    .traffic {
+        grid-column: span 2;
+    }
+
+    .social-stats {
+        grid-column: span 1;
+    }
+
+    .members, .activity, .message, .settings {
+        grid-column: span 1;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .charts {
+        gap: 20px;
+    }
+}
