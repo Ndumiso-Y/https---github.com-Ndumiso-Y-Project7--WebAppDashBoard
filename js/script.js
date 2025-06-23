@@ -4,14 +4,24 @@ const trafficChart = new Chart(document.getElementById('trafficChart'), {
     data: {
         labels: ['16-22', '23-29', '30-5', '6-12', '13-19', '20-26', '27-3', '4-10', '11-17', '18-24', '25-31'],
         datasets: [{
-            label: 'Traffic',
+            label: '', // removed label text
             data: [500, 1000, 1500, 2000, 1800, 1500, 2000, 2200, 1900, 1700, 2500],
             borderColor: '#6a5acd',
             fill: true,
             tension: 0.1
         }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false
+            }
+        }
+    }
 });
 
 const dailyTrafficChart = new Chart(document.getElementById('dailyTrafficChart'), {
@@ -19,12 +29,22 @@ const dailyTrafficChart = new Chart(document.getElementById('dailyTrafficChart')
     data: {
         labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
         datasets: [{
-            label: 'Daily Traffic',
+            label: '',
             data: [50, 100, 150, 200, 180, 120, 90],
             backgroundColor: '#6a5acd'
         }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false
+            }
+        }
+    }
 });
 
 const mobileUsersChart = new Chart(document.getElementById('mobileUsersChart'), {
@@ -36,7 +56,28 @@ const mobileUsersChart = new Chart(document.getElementById('mobileUsersChart'), 
             backgroundColor: ['#6a5acd', '#90ee90', '#add8e6']
         }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right',
+                align: 'center',
+                labels: {
+                    boxWidth: 15,
+                    padding: 10
+                }
+            },
+            title: {
+                display: false
+            }
+        },
+        layout: {
+            padding: {
+                right: 30
+            }
+        }
+    }
 });
 
 // Alert closure
@@ -49,8 +90,9 @@ document.querySelectorAll('.timeframe button').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelector('.timeframe .active').classList.remove('active');
         button.classList.add('active');
-        // Update chart data based on period (simplified example)
-        trafficChart.data.datasets[0].data = [500, 1000, 1500, 2000, 1800, 1500, 2000, 2200, 1900, 1700, 2500]; // Example data
+
+        // Update chart data based on period (example)
+        trafficChart.data.datasets[0].data = [500, 1000, 1500, 2000, 1800, 1500, 2000, 2200, 1900, 1700, 2500];
         trafficChart.update();
     });
 });
@@ -75,6 +117,7 @@ sendMessage.addEventListener('click', () => {
         userSearch.value = '';
         messageInput.value = '';
     }
+
     setTimeout(() => {
         messageError.textContent = '';
     }, 3000);
