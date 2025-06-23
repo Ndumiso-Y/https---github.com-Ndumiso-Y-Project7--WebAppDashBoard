@@ -5,6 +5,47 @@
     box-sizing: border-box;
 }
 
+.dashboard-label {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    padding: 10px 20px;
+    margin-bottom: -10px;
+    display: inline-block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-label h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 60px;
+    height: 100%;
+    background-color: #f4f4f4; /* Same as body background */
+    z-index: -1;
+    border-top-right-radius: 10px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
