@@ -9,22 +9,19 @@
 <body>
   <div class="grid-container">
     <header class="header">
-  <h1 class="logo">WebApp™</h1>
-
-  <div class="header-right">
-    <div class="notification">
-      <img src="/web_app_dashboard_v3.2/svgs/bell.svg" alt="Notifications" class="bell-icon" />
-      <span class="badge"></span>
-    </div>
-
-    <div class="separator"></div>
-
-    <div class="profile">
-      <img src="/web_app_dashboard_v3.2/images/member-1.jpg" alt="Student Name" class="avatar" />
-      <span class="student-name">Student Name</span>
-    </div>
-  </div>
-</header>
+      <h1 class="logo">WebApp™</h1>
+      <div class="header-right">
+        <div class="notification">
+          <img src="/web_app_dashboard_v3.2/svgs/bell.svg" alt="Notifications" class="bell-icon" />
+          <span class="badge"></span>
+        </div>
+        <div class="separator"></div>
+        <div class="profile">
+          <img src="/web_app_dashboard_v3.2/images/member-1.jpg" alt="Student Name" class="avatar" />
+          <span class="student-name">Student Name</span>
+        </div>
+      </div>
+    </header>
 
     <nav>
       <ul>
@@ -34,15 +31,11 @@
         <li><a href="#settings"><img src="/web_app_dashboard_v3.2/svgs/settings.svg" alt="Settings" /></a></li>
       </ul>
     </nav>
-
+    <div class="dashboard-label"></div>
     <main>
-
-      <main>
-  <section class="dashboard-label">
-    <h2>Dashboard</h2>
-  </section>
-
-
+      <section class="dashboard-label">
+        <h2>Dashboard</h2>
+      </section>
 
       <div class="alert" id="alert">Alert: You have unread messages <span class="close">&times;</span></div>
 
@@ -56,10 +49,14 @@
         </div>
         <canvas id="trafficChart"></canvas>
         <div class="charts">
-           <h3>Daily Traffic</h3>
-          <canvas id="dailyTrafficChart"></canvas>
-          <h3>Mobile Users</h3>
-          <canvas id="mobileUsersChart"></canvas>
+          <div class="chart-box">
+            <h3>Daily Traffic</h3>
+            <canvas id="dailyTrafficChart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Mobile Users</h3>
+            <canvas id="mobileUsersChart"></canvas>
+          </div>
         </div>
       </section>
 
@@ -67,19 +64,33 @@
         <h2>SOCIAL STATS</h2>
         <div class="social">
           <div class="social-item">
-            <img src="/web_app_dashboard_v3.2/svgs/facebook.svg" alt="Facebook" width="24" height="24" />
-            <span>Facebook</span>
-            <span>10,320</span>
+            <div class="social-icon">
+              <img src="/web_app_dashboard_v3.2/svgs/facebook.svg" alt="Facebook" />
+            </div>
+            <div class="social-text">
+              <span class="platform">Facebook</span>
+              <span class="count">10,320</span>
+            </div>
           </div>
+
           <div class="social-item">
-            <img src="/web_app_dashboard_v3.2/svgs/insttagram.svg" alt="Instagram" width="24" height="24" />
-            <span>Instagram</span>
-            <span>16,445</span>
+            <div class="social-icon">
+              <img src="/web_app_dashboard_v3.2/svgs/instagram.svg" alt="Instagram" />
+            </div>
+            <div class="social-text">
+              <span class="platform">Instagram</span>
+              <span class="count">16,445</span>
+            </div>
           </div>
+
           <div class="social-item">
-            <img src="/web_app_dashboard_v3.2/svgs/twitter.svg" alt="Twitter" width="24" height="24" />
-            <span>Twitter</span>
-            <span>22,189</span>
+            <div class="social-icon">
+              <img src="/web_app_dashboard_v3.2/svgs/twitter.svg" alt="Twitter" />
+            </div>
+            <div class="social-text">
+              <span class="platform">Twitter</span>
+              <span class="count">22,189</span>
+            </div>
           </div>
         </div>
       </section>
@@ -129,8 +140,8 @@
           </label>
         </div>
         <div class="setting">
-          <span>Select Timezone</span>
-          <select id="timezone">
+          <select id="timezone" >
+            <option value="" disabled selected>Select Timezone</option>
             <option value="UTC">UTC</option>
             <option value="EST">EST</option>
             <option value="PST">PST</option>

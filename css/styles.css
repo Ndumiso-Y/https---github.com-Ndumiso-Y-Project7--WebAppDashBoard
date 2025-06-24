@@ -6,16 +6,16 @@
 }
 
 .dashboard-label {
-    position: relative;
-    z-index: 2;
-    background-color: white;
-    padding: 10px 20px;
-    margin-bottom: -10px;
-    display: inline-block;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  display: inline-block; /* keeps width just around the text */
+  padding-right: 120px;  /* space for the cutout */
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
 }
+
+
 
 .dashboard-label h2 {
     font-size: 18px;
@@ -31,18 +31,6 @@ main {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-main::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -20px;
-    width: 60px;
-    height: 100%;
-    background-color: #f4f4f4; /* Same as body background */
-    z-index: -1;
-    border-top-right-radius: 10px;
 }
 
 
@@ -197,81 +185,164 @@ main {
     margin-bottom: 8px;
 }
 
+
+
 /* Traffic section */
+
+
+
 .timeframe {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1rem 0;
 }
 
 .timeframe button {
-    padding: 4px 8px;
-    background-color: #90ee90;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 999px; /* Oval shape */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.9rem;
 }
 
-.timeframe .active {
-    background-color: #32cd32;
+.timeframe button.active {
+  background-color: #4CAF50; /* Green */
+  color: white;
 }
+
 
 .charts {
-    display: grid;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
 }
+
+.chart-box {
+  flex: 1 1 300px;
+  min-width: 280px;
+}
+
+.chart-box canvas {
+  width: 100% !important;
+  height: 200px !important;
+}
+
+
 
 #trafficChart, #dailyTrafficChart, #mobileUsersChart {
     width: 100% !important;
     height: auto !important;
     max-height: 150px; /* Adjusted for mobile */
+    border-bottom: 0.5px solid rgb(194, 186, 186);
 }
 
 /* Social items */
-.social-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 6px 0;
-    padding: 8px;
-    background-color: #e6e6fa;
-    border-radius: 4px;
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-.social-item img {
-    width: 18px;
-    height: 18px;
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #6a5acd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.social-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.count {
+  font-size: 1rem;
+  color: #777;
 }
 
 /* Members and activity list */
-.members ul, .activity ul {
-    list-style: none;
+.members li,
+.activity li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1.5rem;  /* more space below text */
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem; /* adds breathing space between items */
 }
 
-.members ul li, .activity ul li {
-    display: flex;
-    align-items: center;
-    margin: 6px 0;
-    font-size: 12px;
+.members li:last-child,
+.activity li:last-child {
+  border-bottom: none;
+  margin-bottom: 0; /* no extra space after last item */
 }
 
-.members ul li img, .activity ul li img {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 5px;
+/* Make sure member/activity images stay circular */
+.members li img,
+.activity li img {
+  width: 80px; /* or your preferred size */
+  height: 80px;
+  border-radius: 50%;  /* this makes images circular */
+  object-fit: cover;  /* ensures the image covers the area nicely */
+  margin-bottom: 0.5rem; /* spacing below image */
 }
+
+
 
 /* Message form */
-.message input,
+
+
+
+.message input[type="text"],
 .message textarea {
-    width: 100%;
-    margin: 6px 0;
-    padding: 8px;
-    font-size: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;             /* full width */
+  background-color: #f5f5f7;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;  /* include padding/border in width */
+  margin-bottom: 1rem;
 }
+
+.message input[type="text"] {
+  height: 2.25rem;
+}
+
+.message textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+
 
 .message button {
     width: 100%;
@@ -288,7 +359,7 @@ main {
 .settings .setting {
     display: flex;
     justify-content: space-between;
-    margin: 6px 0;
+    margin: 14px 0;
     font-size: 12px;
 }
 
