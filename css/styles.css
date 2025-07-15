@@ -1,3 +1,4 @@
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -5,40 +6,13 @@
     box-sizing: border-box;
 }
 
-.dashboard-label {
-  position: relative;
-  display: inline-block; /* keeps width just around the text */
-  padding-right: 120px;  /* space for the cutout */
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-
-
-.dashboard-label h2 {
-    font-size: 18px;
-    color: #333;
-    margin: 0;
-}
-
-main {
-    background-color: white;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
 
 
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    font-size: 12px; /* Adjusted for mobile */
+    font-size: 12px;
     line-height: 1.4;
 }
 
@@ -55,27 +29,23 @@ body {
 
 /* Header styling */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #6a5acd; /* or whatever your primary color is */
-  color: white;
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #6a5acd;
+    color: white;
 }
 
-/* Logo */
 .logo {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-header h1 {
-    font-size: 18px; /* Smaller for mobile */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .notification {
@@ -83,15 +53,24 @@ header h1 {
 }
 
 .notification .bell-icon {
-   width: 24px;
-  height: 24px;
-  filter: invert(1); /* Make black SVG white */
-  cursor: pointer;
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
 .notification .bell-icon:hover {
     transform: scale(1.1);
 }
+
+.separator {
+  width: 1px;
+  height: 24px; /* roughly the height of your icons */
+  background-color: rgba(255, 255, 255, 0.5); /* light semi-transparent white */
+  margin: 0 10px; /* spacing around the line */
+}
+
 
 .notification .badge {
     position: absolute;
@@ -103,30 +82,20 @@ header h1 {
     border-radius: 50%;
 }
 
-.separator {
-  width: 1px;
-  height: 33px;
-  background-color: white;
-  margin: 0 10px;
-}
-
-
 .profile {
-display: flex;
-align-items: center;
-gap: 10px;
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .profile img {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    margin-right: 5px;
 }
 
 .profile span {
-    font-size: 12px; /* Reduced size */
+    font-size: 12px;
 }
 
 /* Navigation */
@@ -147,6 +116,9 @@ nav ul li a img {
     height: 18px;
     filter: invert(1);
 }
+
+
+
 
 /* Main content */
 main {
@@ -185,164 +157,160 @@ main {
     margin-bottom: 8px;
 }
 
-
-
 /* Traffic section */
-
-
-
 .timeframe {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
 }
 
 .timeframe button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #e0e0e0;
-  color: #333;
-  border-radius: 999px; /* Oval shape */
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9rem;
 }
 
 .timeframe button.active {
-  background-color: #4CAF50; /* Green */
-  color: white;
+    background-color: #4CAF50;
+    color: white;
 }
 
-
 .charts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr; /* Default to single column on mobile */
 }
 
 .chart-box {
-  flex: 1 1 300px;
-  min-width: 280px;
+    width: 100%;
 }
 
 .chart-box canvas {
-  width: 100% !important;
-  height: 200px !important;
+    width: 100% !important;
+    height: 150px !important;
 }
-
-
 
 #trafficChart, #dailyTrafficChart, #mobileUsersChart {
     width: 100% !important;
     height: auto !important;
-    max-height: 150px; /* Adjusted for mobile */
+    max-height: 150px;
     border-bottom: 0.5px solid rgb(194, 186, 186);
 }
 
 /* Social items */
 .social {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .social-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    background-color: #e6e6fa;
+    border-radius: 4px;
 }
 
 .social-icon {
-  width: 60px;
-  height: 60px;
-  background-color: #6a5acd;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #6a5acd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icon img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
 }
 
 .social-text {
+  
   display: flex;
-  flex-direction: column;
+  text-align: left ;
+  flex-direction: column;  /* stack children vertically */
+  align-items: center;     /* center align horizontally */
 }
 
-.platform {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+
+.social-text .platform {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
 }
 
-.count {
-  font-size: 1rem;
-  color: #777;
+.social-text .count {
+    font-size: 0.9rem;
+    color: #777;
+    display: block;
 }
+
+.social-text span {
+  width: 100%;
+  text-align: left; 
+  margin: 0;         
+  padding: 0;
+}
+
 
 /* Members and activity list */
-.members li,
-.activity li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 1.5rem;  /* more space below text */
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 1rem; /* adds breathing space between items */
+.members ul, .activity ul {
+    list-style: none;
+    width: 100%;
 }
 
-.members li:last-child,
-.activity li:last-child {
-  border-bottom: none;
-  margin-bottom: 0; /* no extra space after last item */
+.members ul li, .activity ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    min-height: 60px;
 }
 
-/* Make sure member/activity images stay circular */
-.members li img,
-.activity li img {
-  width: 80px; /* or your preferred size */
-  height: 80px;
-  border-radius: 50%;  /* this makes images circular */
-  object-fit: cover;  /* ensures the image covers the area nicely */
-  margin-bottom: 0.5rem; /* spacing below image */
+.members ul li:last-child, .activity ul li:last-child {
+    border-bottom: none;
 }
 
-
+.members ul li img, .activity ul li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
 
 /* Message form */
-
-
-
 .message input[type="text"],
 .message textarea {
-  width: 100%;             /* full width */
-  background-color: #f5f5f7;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;  /* include padding/border in width */
-  margin-bottom: 1rem;
+    width: 100%;
+    background-color: #f5f5f7;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
 }
 
 .message input[type="text"] {
-  height: 2.25rem;
+    height: 2.25rem;
 }
 
 .message textarea {
-  min-height: 140px;
-  resize: vertical;
+    min-height: 140px;
+    resize: vertical;
 }
-
-
 
 .message button {
     width: 100%;
@@ -451,12 +419,16 @@ button#cancelSettings {
         grid-template-rows: auto 1fr;
     }
 
-    header {
-        padding: 10px 20px;
+    .header {
+        padding: 15px 20px;
     }
 
-    header h1 {
-        font-size: 22px;
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .header-right {
+        gap: 15px;
     }
 
     .notification .bell-icon {
@@ -474,6 +446,10 @@ button#cancelSettings {
         height: 40px;
     }
 
+    .profile span {
+        font-size: 14px;
+    }
+
     nav {
         padding: 10px;
     }
@@ -486,6 +462,41 @@ button#cancelSettings {
     main {
         padding: 20px;
         gap: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "traffic"
+            "social-stats"
+            "members"
+            "activity"
+            "message"
+            "settings";
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .traffic {
+        grid-area: traffic;
+    }
+
+    .social-stats {
+        grid-area: social-stats;
+    }
+
+    .members {
+        grid-area: members;
+    }
+
+    .activity {
+        grid-area: activity;
+    }
+
+    .message {
+        grid-area: message;
+    }
+
+    .settings {
+        grid-area: settings;
     }
 
     .alert {
@@ -509,26 +520,65 @@ button#cancelSettings {
 
     .charts {
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 
-    #trafficChart, #dailyTrafficChart, #mobileUsersChart {
-        max-height: 200px;
+    .chart-box {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .chart-box canvas {
+        height: 200px !important;
+    }
+
+    .social {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
     }
 
     .social-item {
-        padding: 10px;
-        margin: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
     }
 
-    .social-item img {
-        width: 24px;
-        height: 24px;
+    .social-icon {
+        margin-bottom: 10px;
+    }
+
+    .members ul li, .activity ul li {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        min-height: 60px;
+        width: 100%;
     }
 
     .members ul li img, .activity ul li img {
         width: 40px;
         height: 40px;
-        margin-right: 10px;
+        border-radius: 50%;
+        margin-right: 15px;
+        display: block; /* Ensure image is treated as a block */
+        margin-left: auto;
+        margin-right: auto; /* Center horizontally */
+        align-self: center; /* Center vertically */
+    }
+
+    .members ul li span:nth-child(n+2),
+    .activity ul li span:nth-child(n+2) {
+        display: block; /* Stack spans vertically */
+        margin-bottom: 2px; /* Space between lines */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%; /* Allow full width */
+        font-size: 14px;
+    }
+
+    .members ul li:last-child, .activity ul li:last-child {
+        border-bottom: none;
     }
 
     .message input,
@@ -560,10 +610,20 @@ button#cancelSettings {
 
     button#saveSettings,
     button#cancelSettings {
-        padding: 10px 20px;
-        margin-right: 10px;
+        padding: 12px;
+        font-size: 14px;
+        width: 48%;
+    }
+
+    .settings-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 4%;
+        margin-top: 10px;
     }
 }
+
+
 
 /* Desktop (1024px) and above */
 @media (min-width: 1024px) {
@@ -571,23 +631,21 @@ button#cancelSettings {
         font-size: 16px;
     }
 
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "traffic traffic"
+            "social-stats social-stats"
+            "members activity"
+            "message settings";
+    }
+
     .traffic {
         grid-column: span 2;
     }
 
     .social-stats {
-        grid-column: span 1;
-    }
-
-    .members, .activity, .message, .settings {
-        grid-column: span 1;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    .charts {
-        gap: 20px;
+        grid-column: span 2;
     }
 }
+
